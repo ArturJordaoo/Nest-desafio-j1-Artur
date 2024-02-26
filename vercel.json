@@ -11,8 +11,5 @@
       "src": "/(.*)",
       "dest": "nest-app/main.ts"
     }
-  ],
-  "output": {
-    "root": "dist" 
-  }
+  ]
 }
