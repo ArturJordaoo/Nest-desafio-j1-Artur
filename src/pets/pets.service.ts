@@ -1,12 +1,11 @@
 import {
   Injectable,
   NotFoundException,
-  ConflictException,
-  BadRequestException,
+  ConflictException
 } from '@nestjs/common';
 import { CreatePetDto } from './dto/create-pet.dto';
 import { UpdatePetDto } from './dto/update-pet.dto';
-import { PrismaService } from 'src/database/prisma.service';
+import { PrismaService } from 'src/prisma.service';
 import { Pet } from '.prisma/client';
 
 @Injectable()
