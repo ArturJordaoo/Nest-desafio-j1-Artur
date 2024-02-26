@@ -10,7 +10,7 @@ exports.PetsModule = void 0;
 const common_1 = require("@nestjs/common");
 const pets_service_1 = require("./pets.service");
 const pets_controller_1 = require("./pets.controller");
-const prisma_service_1 = require("../../src/database/prisma.service");
+const prisma_service_1 = require("../database/prisma.service");
 let PetsModule = class PetsModule {
 };
 exports.PetsModule = PetsModule;
