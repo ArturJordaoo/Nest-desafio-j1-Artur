@@ -3,18 +3,18 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Pet {
-  id         String   @id @default(uuid())
+  id         String @id @default(uuid())
   nome       String
-  nascimento DateTime
+  nascimento String
   animal     String
   raca       String
   donoId     String
-  dono       Dono     @relation(fields: [donoId], references: [id])
+  dono       Dono   @relation(fields: [donoId], references: [id])
 }
 
 model Dono {
