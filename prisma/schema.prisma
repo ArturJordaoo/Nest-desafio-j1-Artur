@@ -8,18 +8,27 @@ datasource db {
 }
 
 model Pet {
+<<<<<<< HEAD
   id         String @id @default(uuid())
+=======
+  id         Int      @id @default(autoincrement())
+>>>>>>> parent of 4e2ef3b (commit final)
   nome       String
   nascimento String
   animal     String
   raca       String
+<<<<<<< HEAD
   donoId     String
   dono       Dono   @relation(fields: [donoId], references: [id])
+=======
+  donoId     Int
+  dono       Dono     @relation(fields: [donoId], references: [id])
+>>>>>>> parent of 4e2ef3b (commit final)
 }
 
 model Dono {
-  id       String @id @default(uuid())
-  donoNome String
+  id       Int    @id @default(autoincrement())
+  nome     String
   telefone String
-  pets     Pet[]
+  Pet      Pet[]
 }
