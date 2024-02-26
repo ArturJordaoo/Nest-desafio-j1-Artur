@@ -8,18 +8,18 @@ datasource db {
 }
 
 model Pet {
-  id         Int      @id @default(autoincrement())
+  id         String   @id @default(uuid())
   nome       String
   nascimento DateTime
   animal     String
   raca       String
-  donoId     Int
+  donoId     String
   dono       Dono     @relation(fields: [donoId], references: [id])
 }
 
 model Dono {
-  id       Int    @id @default(autoincrement())
-  nome     String
+  id       String @id @default(uuid())
+  donoNome String
   telefone String
-  Pet      Pet[]
+  pets     Pet[]
 }
