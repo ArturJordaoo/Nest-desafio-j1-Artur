@@ -1,10 +1,13 @@
-import { INestApplication, Injectable, OnModuleInit } from '@nestjs/common';
-import { PrismaClient } from '@prisma/client';
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
 
-@Injectable()
-export class PrismaService extends PrismaClient implements OnModuleInit {
-  async onModuleInit() {
-    await this.$connect();
-  }
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  
+  // Log the PORT value
+  console.log('Port:', process.env.PORT);
+  
+  await app.listen(process.env.PORT || 3000);
+}
 
-  }
+bootstrap();
