@@ -5,6 +5,9 @@
   "author": "",
   "private": false,
   "license": "UNLICENSED",
+  "engines":{
+    "node":"18"
+  },
   "scripts": {
     "postinstall": "prisma generate",
     "vercel-build": "npx prisma migrate deploy",
