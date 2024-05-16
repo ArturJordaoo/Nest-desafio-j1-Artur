@@ -18,20 +18,15 @@ export class PetsController {
   }
 
   @Get()
-  async findAll() {
+  async findAll(@Query('q') query?: string) {
     try {
-      const pets = await this.petsService.findAll();
-      return { data: pets };
-    } catch (error) {
-      return { message: error.message };
-    }
-  }
-
-  @Get('search')
-  async search(@Query('q') query: string) {
-    try {
-      const pets = await this.petsService.search(query);
-      return { data: pets };
+      if (query) {
+        const pets = await this.petsService.search(query);
+        return { data: pets };
+      } else {
+        const pets = await this.petsService.findAll();
+        return { data: pets };
+      }
     } catch (error) {
       return { message: error.message };
     }

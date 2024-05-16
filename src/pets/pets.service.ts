@@ -87,7 +87,6 @@ export class PetsService {
     });
   }
 
-  // Novo método para buscar pets pelo nome
   async search(query: string): Promise<Pet[]> {
     return this.prisma.pet.findMany({
       where: {
