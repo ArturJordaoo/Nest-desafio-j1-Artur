@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete} from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { PetsService } from './pets.service';
 import { CreatePetDto } from './dto/create-pet.dto';
 import { UpdatePetDto } from './dto/update-pet.dto';
@@ -21,6 +21,16 @@ export class PetsController {
   async findAll() {
     try {
       const pets = await this.petsService.findAll();
+      return { data: pets };
+    } catch (error) {
+      return { message: error.message };
+    }
+  }
+
+  @Get('search')
+  async search(@Query('q') query: string) {
+    try {
+      const pets = await this.petsService.search(query);
       return { data: pets };
     } catch (error) {
       return { message: error.message };

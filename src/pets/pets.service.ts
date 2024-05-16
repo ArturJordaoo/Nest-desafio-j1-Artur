@@ -1,7 +1,7 @@
 import {
   Injectable,
   NotFoundException,
-  ConflictException
+  ConflictException,
 } from '@nestjs/common';
 import { CreatePetDto } from './dto/create-pet.dto';
 import { UpdatePetDto } from './dto/update-pet.dto';
@@ -84,6 +84,18 @@ export class PetsService {
 
     await this.prisma.pet.delete({
       where: { id },
+    });
+  }
+
+  // Novo método para buscar pets pelo nome
+  async search(query: string): Promise<Pet[]> {
+    return this.prisma.pet.findMany({
+      where: {
+        nome: {
+          contains: query,
+          mode: 'insensitive', // Para busca case-insensitive
+        },
+      },
     });
   }
 }
